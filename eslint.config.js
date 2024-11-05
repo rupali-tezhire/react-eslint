@@ -16,13 +16,24 @@ export default tseslint.config(
     plugins: {
       'react-hooks': reactHooks,
       'react-refresh': reactRefresh,
+      'react': react,
+      '@typescript-eslint': typescriptEslint,
+      'prettier': prettier
     },
+    ignorePatterns: ['dist', 'eslintrc.cjs', 'vite.config.ts'],
     rules: {
+      'react/react-in-jsx-scope': 'off',
       ...reactHooks.configs.recommended.rules,
       'react-refresh/only-export-components': [
         'warn',
         { allowConstantExport: true },
-      ],
+      ]
     },
-  },
+      'settings': {
+        'react': {
+          'version': 'detect'
+        }
+      
+    }
+  }
 )
