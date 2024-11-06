@@ -1,0 +1,34 @@
+name: deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+            persist-credentials: false
+
+      - name: use node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: install dependencies
+        run: npm install
+
+      - name: build
+        run: npm run build
+
+      - name: deploy producation url
+        if: github.ref == 'refs/heads/main'
+        uses: jamesIves/github-pages-deploy-action@v4
+        
+        with:
+          branch: gh-pages
+          folder: dist/
