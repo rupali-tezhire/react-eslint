@@ -7,6 +7,7 @@ import * as tseslint from 'typescript-eslint';
 export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
+  // Base config for all files
   {
     files: ['**/*.{js,jsx,ts,tsx}'],
     plugins: {
@@ -14,23 +15,29 @@ export default [
       'react-hooks': reactHooksPlugin,
       'react-refresh': reactRefreshPlugin,
     },
-    languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: {
-        ecmaVersion: 'latest',
-        sourceType: 'module',
-        ecmaFeatures: {
-          jsx: true,
-        },
-        project: ['tsconfig.json', 'tsconfig.node.json']  // Removed ./ and tsconfigRootDir
-      },
-      globals: {
-        React: 'readonly',
-      },
-    },
     rules: {
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
+    },
+  },
+  // Config specifically for TypeScript files
+  {
+    files: ['**/*.ts', '**/*.tsx'],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        project: './tsconfig.json',
+      },
+    },
+  },
+  // Config specifically for config files
+  {
+    files: ['*.config.js', '*.config.ts'],
+    languageOptions: {
+      parser: tseslint.parser,
+      parserOptions: {
+        project: null,  // Disable typescript checking for config files
+      },
     },
   },
 ];
