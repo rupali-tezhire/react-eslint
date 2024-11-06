@@ -32,7 +32,7 @@ export default [
   },
   // Config specifically for config files
   {
-    files: ['*eslint.config.js', '*vite.config.ts'],
+    files: ['*.config.js', '*.config.ts'],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
