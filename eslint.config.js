@@ -32,7 +32,7 @@ export default [
   },
   // Config specifically for config files
   {
-    files: ['*.config.js', '*.config.ts'],
+    files: ['*.config.src', '*.config.ts'],
     languageOptions: {
       parser: tseslint.parser,
       parserOptions: {
