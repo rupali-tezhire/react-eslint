@@ -1,25 +1,13 @@
 {
   "compilerOptions": {
-    "incremental": true,
-    "composite": true,                   
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.node.tsbuildinfo",
-    "target": "ES2022",
-    "lib": ["ES2023"],
-    "module": "ESNext",
+    "composite": true,
     "skipLibCheck": true,
-
-    "include": ["vite.config.ts" , "eslint.config.js"],
-   "moduleResolution": "Bundler",
-    "allowImportingTsExtensions": true,
-    "isolatedModules": true,
-    "moduleDetection": "force",
-    "noEmit": true,                  
-
-    
+    "module": "ESNext",
+    "moduleResolution": "bundler",
+    "allowSyntheticDefaultImports": true,
     "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true
+    "noEmit": true
   },
-  "include": ["vite.config.ts","eslint.config.js"]
+  "include": ["eslint.config.js", "vite.config.ts"],
+  "exclude": ["node_modules"]
 }
