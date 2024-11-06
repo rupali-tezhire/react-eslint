@@ -1,0 +1,26 @@
+name: continuous-integration
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+       - uses: actions/checkout@v4
+       - name:  use nodejs
+         uses: actions/setup-node@v4
+         with:
+           node-version: 18
+        
+       - name: install dependencies
+         run: npm install
+
+       - name: run linter   
+         run: npm run lint
+
+
