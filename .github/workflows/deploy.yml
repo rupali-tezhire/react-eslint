@@ -5,15 +5,16 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
+
   
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     permissions:
-     checks: write
+      contents: write
+      checks: write
 
     steps:
       - uses: actions/checkout@v3
