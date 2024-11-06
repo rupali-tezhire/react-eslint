@@ -8,7 +8,7 @@ export default [
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ['**/*.{js,jsx,ts,tsx}'],
+    files: ['**/*.{ts,tsx}'],
     plugins: {
       react: reactPlugin,
       'react-hooks': reactHooksPlugin,
@@ -22,7 +22,7 @@ export default [
         ecmaFeatures: {
           jsx: true,
         },
-        project: ['./tsconfig.json', './tsconfig.node.json'],  // Include both config files
+        project: './tsconfig.json',  // Include both config files
         tsconfigRootDir: '.',
       },
       globals: {
@@ -36,7 +36,7 @@ export default [
   },
   // Add specific config for config files
   {
-    files: ['**/*.config.{js,ts}'],
+    files: ['*.js', '*.cjs', '*.mjs'],
     languageOptions: {
       parserOptions: {
         project: './tsconfig.node.json',  
