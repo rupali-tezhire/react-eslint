@@ -8,7 +8,7 @@
     "module": "ESNext",
     "skipLibCheck": true,
 
-    /* Bundler mode */
+    "include": ["vite.config.ts" , "eslint.config.js"],
    "moduleResolution": "Bundler",
     "allowImportingTsExtensions": true,
     "isolatedModules": true,
