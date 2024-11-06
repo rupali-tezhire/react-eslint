@@ -22,7 +22,8 @@ export default [
         ecmaFeatures: {
           jsx: true,
         },
-        project: './tsconfig.json',
+        project: ['./tsconfig.json', './tsconfig.node.json'],  // Include both config files
+        tsconfigRootDir: '.',
       },
       globals: {
         React: 'readonly',
@@ -31,6 +32,15 @@ export default [
     rules: {
       'react/react-in-jsx-scope': 'off',
       'react/jsx-uses-react': 'off',
+    },
+  },
+  // Add specific config for config files
+  {
+    files: ['**/*.config.{js,ts}'],
+    languageOptions: {
+      parserOptions: {
+        project: './tsconfig.node.json',  // Config files use node tsconfig
+      },
     },
   },
 ];
