@@ -39,7 +39,7 @@ export default [
     files: ['**/*.config.{js,ts}'],
     languageOptions: {
       parserOptions: {
-        project: './tsconfig.node.json',  // Config files use node tsconfig
+        project: './tsconfig.node.json',  
       },
     },
   },
