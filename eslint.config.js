@@ -1,43 +1,14 @@
-import js from '@eslint/js';
-import reactPlugin from 'eslint-plugin-react';
-import reactHooksPlugin from 'eslint-plugin-react-hooks';
-import reactRefreshPlugin from 'eslint-plugin-react-refresh';
-import * as tseslint from 'typescript-eslint';
+import globals from "globals";
+import pluginJs from "@eslint/js";
+import tseslint from "typescript-eslint";
+import pluginReact from "eslint-plugin-react";
 
+
+/** @type {import('eslint').Linter.Config[]} */
 export default [
-  js.configs.recommended,
+  {files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"]},
+  {languageOptions: { globals: globals.browser }},
+  pluginJs.configs.recommended,
   ...tseslint.configs.recommended,
-  // Base config for all files
-  {
-    files: ['**/*.{js,jsx,ts,tsx}'],
-    plugins: {
-      react: reactPlugin,
-      'react-hooks': reactHooksPlugin,
-      'react-refresh': reactRefreshPlugin,
-    },
-    rules: {
-      'react/react-in-jsx-scope': 'off',
-      'react/jsx-uses-react': 'off',
-    },
-  },
-  // Config specifically for TypeScript files
-  {
-    files: ['**/*.ts', '**/*.tsx'],
-    languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: {
-        project: './tsconfig.json',
-      },
-    },
-  },
-  // Config specifically for config files
-  {
-    files: ['*.config.src', '*.config.ts'],
-    languageOptions: {
-      parser: tseslint.parser,
-      parserOptions: {
-        project: null,  // Disable typescript checking for config files
-      },
-    },
-  },
+  pluginReact.configs.flat.recommended,
 ];
